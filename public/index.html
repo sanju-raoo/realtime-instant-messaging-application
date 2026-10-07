@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>ChatApp - Real-Time Messaging</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>
+
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="app-logo">
+                💬
+            </div>
+
+            <div>
+                <h2>ChatApp</h2>
+                <span>Real-Time Messaging</span>
+            </div>
+
+        </div>
+
+
+        <!-- CURRENT USER -->
+
+        <div class="current-user">
+
+            <div class="profile-avatar">
+                👤
+            </div>
+
+            <div class="profile-info">
+
+                <strong id="usernameDisplay">
+                    User
+                </strong>
+
+                <small>
+                    🟢 Online
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <span>🔍</span>
+
+            <input
+                type="text"
+                id="userSearch"
+                placeholder="Search users..."
+            >
+
+        </div>
+
+
+        <!-- USERS -->
+
+        <div class="users-title">
+            <span>CONTACTS</span>
+        </div>
+
+        <div id="userList" class="user-list"></div>
+
+
+        <!-- LOGOUT -->
+
+        <button id="logoutBtn" class="logout-btn">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- CHAT AREA -->
+
+    <main class="chat-area">
+
+
+        <!-- CHAT HEADER -->
+
+        <header class="chat-header">
+
+            <div class="chat-user">
+
+                <div class="chat-avatar">
+                    👤
+                </div>
+
+                <div>
+
+                    <h2 id="chatHeader">
+                        Select a user
+                    </h2>
+
+                    <span id="chatStatus">
+                        Select someone to start chatting
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- MESSAGES -->
+
+        <section
+            id="messages"
+            class="messages"
+        >
+
+            <div class="welcome-message">
+
+                <div class="welcome-icon">
+                    💬
+                </div>
+
+                <h2>Welcome to ChatApp</h2>
+
+                <p>
+                    Select a contact to start a conversation.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- TYPING -->
+
+        <div
+            id="typingIndicator"
+            class="typing-indicator"
+        ></div>
+
+
+        <!-- MESSAGE INPUT -->
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Type a message..."
+                autocomplete="off"
+            >
+
+            <button
+                onclick="sendMessage()"
+                class="send-btn"
+            >
+                ➤
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- SOCKET.IO -->
+
+<script src="/socket.io/socket.io.js"></script>
+
+<!-- CHAT JS -->
+
+<script src="chat.js"></script>
+
+
+<!-- LOGOUT -->
+
+<script>
+
+    document
+        .getElementById("logoutBtn")
+        .addEventListener("click", function () {
+
+            localStorage.removeItem("token");
+
+            window.location.href = "/login.html";
+
+        });
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ChatApp - Login</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    }
+
+    .login-container {
+        width: 400px;
+        max-width: 90%;
+        background: #ffffff;
+        padding: 42px;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
+    }
+
+    /* LOGO */
+
+    .logo {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 18px;
+
+        background: #4f46e5;
+
+        font-size: 31px;
+
+        box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+    }
+
+    /* BRAND */
+
+    .brand {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    .brand h1 {
+        font-size: 27px;
+        color: #111827;
+        margin-bottom: 8px;
+    }
+
+    .brand p {
+        font-size: 14px;
+        color: #8b8f98;
+    }
+
+    /* FORM */
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        color: #374151;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+    }
+
+    input {
+        width: 100%;
+        height: 48px;
+
+        padding: 0 14px 0 42px;
+
+        border: 1px solid #dfe3e8;
+        border-radius: 11px;
+
+        outline: none;
+
+        font-size: 14px;
+
+        transition: 0.2s;
+    }
+
+    input:focus {
+        border-color: #6366f1;
+
+        box-shadow:
+            0 0 0 3px rgba(99, 102, 241, 0.10);
+    }
+
+    /* LOGIN BUTTON */
+
+    .login-btn {
+        width: 100%;
+        height: 48px;
+
+        margin-top: 4px;
+
+        border: none;
+        border-radius: 11px;
+
+        background: #4f46e5;
+        color: white;
+
+        font-size: 15px;
+        font-weight: 600;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+    }
+
+    .login-btn:hover {
+        background: #4338ca;
+
+        transform: translateY(-1px);
+
+        box-shadow:
+            0 7px 18px rgba(79, 70, 229, 0.25);
+    }
+
+    .login-btn:active {
+        transform: translateY(0);
+    }
+
+    /* MESSAGE */
+
+    #message {
+        text-align: center;
+
+        margin-top: 16px;
+
+        min-height: 20px;
+
+        font-size: 14px;
+    }
+
+    /* REGISTER */
+
+    .register-link {
+        text-align: center;
+
+        margin-top: 28px;
+
+        font-size: 14px;
+
+        color: #6b7280;
+    }
+
+    .register-link a {
+        color: #4f46e5;
+
+        text-decoration: none;
+
+        font-weight: 600;
+    }
+
+    .register-link a:hover {
+        text-decoration: underline;
+    }
+
+    /* SECURITY */
+
+    .security {
+        text-align: center;
+
+        margin-top: 24px;
+
+        font-size: 11px;
+
+        color: #9ca3af;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 500px) {
+
+        .login-container {
+            padding: 32px 24px;
+        }
+
+        .brand h1 {
+            font-size: 24px;
+        }
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+
+<div class="login-container">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+        💬
+    </div>
+
+
+    <!-- BRAND -->
+
+    <div class="brand">
+
+        <h1>
+            Welcome Back
+        </h1>
+
+        <!-- <p>
+            Sign in to continue to ChatApp
+        </p> -->
+
+    </div>
+
+
+    <!-- USERNAME -->
+
+    <div class="form-group">
+
+        <label for="username">
+            Username
+        </label>
+
+        <div class="input-wrapper">
+
+            <span class="input-icon">
+                👤
+            </span>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter your username"
+                autocomplete="username"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- PASSWORD -->
+
+    <div class="form-group">
+
+        <label for="password">
+            Password
+        </label>
+
+        <div class="input-wrapper">
+
+            <span class="input-icon">
+                🔒
+            </span>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <button
+        class="login-btn"
+        onclick="loginUser()"
+    >
+        Login
+    </button>
+
+
+    <!-- MESSAGE -->
+
+    <p id="message"></p>
+
+
+    <!-- REGISTER -->
+
+    <div class="register-link">
+
+        Don't have an account?
+
+        <a href="/register.html">
+            Register account
+        </a>
+
+    </div>
+
+
+    <!-- SECURITY -->
+
+    <div class="security">
+
+        🔐 Secure authentication
+
+    </div>
+
+</div>
+
+
+<script>
+
+    async function loginUser() {
+
+        const username =
+            document
+                .getElementById("username")
+                .value
+                .trim();
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+
+        if (!username || !password) {
+
+            document
+                .getElementById("message")
+                .textContent =
+                "Please enter username and password";
+
+            return;
+
+        }
+
+
+        try {
+
+            const response =
+                await fetch("/api/login", {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        username: username,
+                        password: password
+
+                    })
+
+                });
+
+
+            const data =
+                await response.json();
+
+
+            if (response.ok) {
+
+                localStorage.setItem(
+                    "token",
+                    data.token
+                );
+
+                localStorage.setItem(
+                    "username",
+                    data.username
+                );
+
+
+                document
+                    .getElementById("message")
+                    .textContent =
+                    "Login successful ✓";
+
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        "/index.html";
+
+                }, 500);
+
+
+            } else {
+
+                document
+                    .getElementById("message")
+                    .textContent =
+                    data.message;
+
+            }
+
+
+        } catch (error) {
+
+            document
+                .getElementById("message")
+                .textContent =
+                "Unable to connect to server";
+
+            console.error(error);
+
+        }
+
+    }
+
+
+    // ENTER KEY LOGIN
+
+    document
+        .getElementById("password")
+        .addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    loginUser();
+
+                }
+
+            }
+        );
+
+</script>
+
+
+</body>
+
+</html>
