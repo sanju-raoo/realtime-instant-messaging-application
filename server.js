@@ -1,7 +1,7 @@
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const path = require('path');
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
@@ -536,3 +536,5 @@ server.listen(3000, () => {
 app.get('/', (req, res) => {
   res.send('Server is up and running!');
 });
+
+app.get('/favicon.ico', (req, res) => res.status(204).end());
