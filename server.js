@@ -177,19 +177,12 @@ io.on("connection", (socket) => {
     );
 }
 
-socket.emit("privateMessage", newMessage);
 
 if (receiverUser.socketId) {
     socket.emit("messageDelivered", {
         messageId: newMessage._id
     });
 }
-
-                // Send back to sender
-                socket.emit(
-                    "privateMessage",
-                    newMessage
-                );
 
             } catch (error) {
 
