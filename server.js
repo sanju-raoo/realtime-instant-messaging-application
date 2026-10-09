@@ -66,38 +66,39 @@ io.on("connection", (socket) => {
         try {
         const username = socket.user.username;
 
-        let user = await User.findOne({ username: username });
+        
+const user = await User.findOne({  username });
 
-            if (!user) {
-
-                user = new User({
-                    username: username,
-                    socketId: socket.id,
-                    online: true
-                });
-
-            } else {
-
-                user.socketId = socket.id;
-                user.online = true;
-
-            }
-
-            await user.save();
-
+if (!user) {
+    console.log("User not found in database:", username);
+    return;
+}
+ // Don't save an account with a missing fullName.
+        if (!user.fullName || !user.fullName.trim()) {
             console.log(
-                "User registered:",
-                username
+                "Full name missing for:",
+                username,
+                "- Please update this user's record."
             );
+            return;
+        }
 
-            io.emit("userStatus", {
-                username: username,
-                online: true
-            });
+user.socketId = socket.id;
+user.online = true;
 
-            const users = await User.find();
+await user.save();
 
-            io.emit("userList", users);
+console.log("User online:", username);
+
+io.emit("userStatus", {
+    username: username,
+    online: true
+});
+
+ const users = await User.find().select(
+            "fullName username online"
+        );
+io.emit("userList", users);
 
         } catch (error) {
 
@@ -377,9 +378,9 @@ app.post("/api/register", async (req, res) => {
 
     try {
 
-        const { username, password } = req.body;
+        const { fullName, username, password } = req.body;
 
-        if (!username || !password) {
+        if (!fullName || !username || !password) {
 
             return res.status(400).json({
                 message: "Username and password are required"
@@ -403,8 +404,8 @@ app.post("/api/register", async (req, res) => {
 
         const user =
             new User({
-
-                username: username,
+                fullName: fullName.trim(),
+                username: username.trim(),
 
                 password: hashedPassword,
 
@@ -534,8 +535,5 @@ server.listen(3000, () => {
 
 });
 
-app.get('/', (req, res) => {
-  res.send('Server is up and running!');
-});
 
 app.get('/favicon.ico', (req, res) => res.status(204).end());

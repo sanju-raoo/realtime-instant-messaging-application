@@ -1,312 +1,316 @@
+
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>ChatApp - Register</title>
 
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>ChatApp - Register</title>
-
-<style>
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #f3f4f6;
-    }
-
-    .register-container {
-        width: 400px;
-        max-width: 90%;
-        background: white;
-        padding: 40px;
-        border-radius: 18px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-    }
-
-    .logo {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 15px;
-        border-radius: 16px;
-        background: #4f46e5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 30px;
-    }
-
-    .brand {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .brand h1 {
-        color: #1f2937;
-        font-size: 26px;
-        margin-bottom: 7px;
-    }
-
-    .brand p {
-        color: #8b8f98;
-        font-size: 13px;
-    }
-
-    .form-group {
-        margin-bottom: 18px;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 7px;
-        color: #374151;
-        font-size: 14px;
-        font-weight: bold;
-    }
-
-    input {
-        width: 100%;
-        padding: 13px 14px;
-        border: 1px solid #dfe3e8;
-        border-radius: 10px;
-        outline: none;
-        font-size: 14px;
-        transition: 0.2s;
-    }
-
-    input:focus {
-        border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-    }
-
-    .register-btn {
-        width: 100%;
-        padding: 13px;
-        margin-top: 5px;
-        border: none;
-        border-radius: 10px;
-        background: #4f46e5;
-        color: white;
-        font-size: 15px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-
-    .register-btn:hover {
-        background: #4338ca;
-    }
-
-    #message {
-        text-align: center;
-        margin-top: 15px;
-        font-size: 14px;
-        min-height: 20px;
-    }
-
-    .login-link {
-        text-align: center;
-        margin-top: 25px;
-        font-size: 14px;
-        color: #6b7280;
-    }
-
-    .login-link a {
-        color: #4f46e5;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .login-link a:hover {
-        text-decoration: underline;
-    }
-
-    @media (max-width: 500px) {
-
-        .register-container {
-            padding: 30px 22px;
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-    }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f3f4f6;
+            padding: 20px;
+        }
 
-</style>
+        .register-container {
+            width: 400px;
+            max-width: 100%;
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
 
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            border-radius: 16px;
+            background: #4f46e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
 
+        .brand {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .brand h1 {
+            color: #1f2937;
+            font-size: 26px;
+            margin-bottom: 7px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 7px;
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #374151;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            display: block;
+            width: 100%;
+            height: 45px;
+            padding: 0 14px;
+            border: 1px solid #dfe3e8;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .register-btn {
+            display: block;
+            width: 100%;
+            padding: 13px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 10px;
+            background: #4f46e5;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .register-btn:hover {
+            background: #4338ca;
+        }
+
+        .register-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            min-height: 20px;
+            overflow-wrap: anywhere;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .login-link a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 500px) {
+            .register-container {
+                padding: 30px 22px;
+            }
+
+            .brand h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <div class="register-container">
 
+        <div class="logo">💬</div>
 
-<div class="register-container">
+        <div class="brand">
+            <h1>Register Account</h1>
+        </div>
 
-    <div class="logo">
-        💬
-    </div>
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                maxlength="100"
+                required
+            >
+        </div>
 
-    <div class="brand">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Choose a username"
+                autocomplete="username"
+                required
+            >
+        </div>
 
-        <h1>Register Account</h1>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                autocomplete="new-password"
+                required
+            >
+        </div>
 
-        <!-- <p>
-            Join ChatApp and start messaging
-        </p> -->
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm password"
+                autocomplete="new-password"
+                required
+            >
+        </div>
 
-    </div>
-
-
-    <div class="form-group">
-
-        <label for="username">
-            Username
-        </label>
-
-        <input
-            type="text"
-            id="username"
-            placeholder="Choose a username"
-            autocomplete="username"
+        <button
+            type="button"
+            class="register-btn"
+            id="registerBtn"
+            onclick="registerUser()"
         >
+            Register
+        </button>
+
+        <p id="message" role="status" aria-live="polite"></p>
+
+        <div class="login-link">
+            Already have an account?
+            <a href="/login.html">Login</a>
+        </div>
 
     </div>
 
+    <script>
+        async function registerUser() {
+            const fullName =
+                document.getElementById("fullName").value.trim();
 
-    <div class="form-group">
+            const username =
+                document.getElementById("username").value.trim();
 
-        <label for="password">
-            Password
-        </label>
+            const password =
+                document.getElementById("password").value;
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Create a password"
-            autocomplete="new-password"
-        >
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
 
-    </div>
+            const message = document.getElementById("message");
+            const registerBtn = document.getElementById("registerBtn");
 
+            if (!fullName || !username || !password || !confirmPassword) {
+                message.textContent = "Please fill in all fields.";
+                message.style.color = "#dc2626";
+                return;
+            }
 
-    <button
-        class="register-btn"
-        onclick="registerUser()"
-    >
-        Register
-    </button>
+            if (password !== confirmPassword) {
+                message.textContent = "Passwords do not match.";
+                message.style.color = "#dc2626";
+                return;
+            }
 
+            if (password.length < 6) {
+                message.textContent =
+                    "Password must be at least 6 characters long.";
+                message.style.color = "#dc2626";
+                return;
+            }
 
-    <p id="message"></p>
+            try {
+                registerBtn.disabled = true;
+                registerBtn.textContent = "Registering...";
+                message.textContent = "";
 
-
-    <div class="login-link">
-
-        Already have an account?
-
-        <a href="/login.html">
-            Login
-        </a>
-
-    </div>
-
-</div>
-
-
-<script>
-
-    async function registerUser() {
-
-        const username =
-            document.getElementById("username")
-                .value.trim();
-
-        const password =
-            document.getElementById("password")
-                .value;
-
-
-        if (!username || !password) {
-
-            document.getElementById("message")
-                .textContent =
-                "Please enter username and password";
-
-            return;
-
-        }
-
-
-        try {
-
-            const response =
-                await fetch("/api/register", {
-
+                const response = await fetch("/api/register", {
                     method: "POST",
-
                     headers: {
                         "Content-Type": "application/json"
                     },
-
                     body: JSON.stringify({
-
+                        fullName: fullName,
                         username: username,
                         password: password
-
                     })
-
                 });
 
+                const data = await response.json();
 
-            const data =
-                await response.json();
+                message.textContent =
+                    data.message || (response.ok
+                        ? "Registration successful."
+                        : "Registration failed.");
 
+                message.style.color = response.ok
+                    ? "#16a34a"
+                    : "#dc2626";
 
-            document.getElementById("message")
-                .textContent =
-                data.message;
+                if (response.ok) {
+                    registerBtn.textContent = "Success!";
 
+                    setTimeout(() => {
+                        window.location.href = "/login.html";
+                    }, 1000);
+                } else {
+                    registerBtn.disabled = false;
+                    registerBtn.textContent = "Register";
+                }
 
-            if (response.ok) {
+            } catch (error) {
+                console.error("Registration error:", error);
 
-                setTimeout(() => {
+                message.textContent = "Unable to connect to server.";
+                message.style.color = "#dc2626";
 
-                    window.location.href =
-                        "/login.html";
-
-                }, 1000);
-
+                registerBtn.disabled = false;
+                registerBtn.textContent = "Register";
             }
-
-
-        } catch (error) {
-
-            document.getElementById("message")
-                .textContent =
-                "Unable to connect to server";
-
-            console.error(error);
-
         }
-
-    }
-
-</script>
-
-
+    </script>
 </body>
-
 </html>
