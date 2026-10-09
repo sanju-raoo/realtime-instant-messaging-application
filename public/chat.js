@@ -248,51 +248,36 @@ messages.scrollTop =
 
 }
 
-// =========================
+
+ // =========================
 // RECEIVE PRIVATE MESSAGE
 // =========================
 
-socket.on(
-"privateMessage",
-(chatData) => {
-
-
-    /*
-     Only show the message if it belongs
-     to the currently selected conversation.
-    */
-
+socket.on("privateMessage", (chatData) => {
     const belongsToCurrentChat =
-
         (
             chatData.username === username &&
             chatData.receiver === selectedUser
-        )
-
-        ||
-
+        ) ||
         (
             chatData.username === selectedUser &&
             chatData.receiver === username
         );
 
-
     if (!belongsToCurrentChat) {
         return;
     }
 
-
-    // Remove welcome message if present
-    const welcome =
-        document.querySelector(".welcome-message");
+    const welcome = document.querySelector(".welcome-message");
 
     if (welcome) {
         welcome.remove();
     }
 
-
+    // Display the message once
     displayMessage(chatData);
-    socket.on("messageDelivered", (data) => {
+    
+socket.on("messageDelivered", (data) => {
     const statusElement = document.querySelector(
         `.message-status[data-message-id="${data.messageId}"]`
     );
@@ -302,10 +287,10 @@ socket.on(
     }
 });
 }
-
-
-
 );
+
+
+
 
 // =========================
 // USER LIST
