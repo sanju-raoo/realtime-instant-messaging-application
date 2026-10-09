@@ -61,7 +61,7 @@ io.on("connection", (socket) => {
     // JOIN CHAT
     // =========================
 
-    socket.on("joinChat", async (username) => {
+    socket.on("joinChat", async () => {
 
         try {
         const username = socket.user.username;
@@ -169,13 +169,21 @@ io.on("connection", (socket) => {
                 );
 
 
-                // Send to receiver
-             if (receiverUser.socketId) {
+// Send message to receiver
+if (receiverUser.online && receiverUser.socketId) {
     io.to(receiverUser.socketId).emit(
         "privateMessage",
         newMessage
     );
+
+    // Notify sender that receiver is online and message was delivered
+    socket.emit("messageDelivered", {
+        messageId: newMessage._id.toString()
+    });
 }
+
+// Show message immediately to sender
+socket.emit("privateMessage", newMessage);
 
 
 if (receiverUser.socketId) {

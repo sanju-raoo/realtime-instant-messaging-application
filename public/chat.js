@@ -249,34 +249,30 @@ messages.scrollTop =
 }
 
 
- // =========================
+
+// =========================
 // RECEIVE PRIVATE MESSAGE
 // =========================
 
 socket.on("privateMessage", (chatData) => {
     const belongsToCurrentChat =
-        (
-            chatData.username === username &&
-            chatData.receiver === selectedUser
-        ) ||
-        (
-            chatData.username === selectedUser &&
-            chatData.receiver === username
-        );
+        (chatData.username === username &&
+            chatData.receiver === selectedUser) ||
+        (chatData.username === selectedUser &&
+            chatData.receiver === username);
 
-    if (!belongsToCurrentChat) {
-        return;
-    }
+    if (!belongsToCurrentChat) return;
 
     const welcome = document.querySelector(".welcome-message");
+    if (welcome) welcome.remove();
 
-    if (welcome) {
-        welcome.remove();
-    }
-
-    // Display the message once
     displayMessage(chatData);
-    
+});
+
+// =========================
+// MESSAGE DELIVERY STATUS
+// =========================
+
 socket.on("messageDelivered", (data) => {
     const statusElement = document.querySelector(
         `.message-status[data-message-id="${data.messageId}"]`
@@ -286,11 +282,6 @@ socket.on("messageDelivered", (data) => {
         statusElement.textContent = "✓✓";
     }
 });
-}
-);
-
-
-
 
 // =========================
 // USER LIST
@@ -300,7 +291,7 @@ socket.on(
 "userList",
 (users) => {
 
-
+console.log("User list received:", users);
     userList.innerHTML = "";
 
     users.forEach(
